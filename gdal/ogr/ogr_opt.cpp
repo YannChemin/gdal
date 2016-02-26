@@ -486,6 +486,20 @@ static const char * const papszProjectionDefinitions[] = {
     SRS_PP_PEG_POINT_HEADING,
     SRS_PP_PEG_POINT_HEIGHT,
 
+    "*",
+    SRS_PT_OBLIQUE_CYLINDRICAL_EQUAL_AREA_2PT,
+    "Oblique Cylindrical Equal Area",
+    SRS_PP_LONGITUDE_OF_POINT_1,
+    SRS_PP_LATITUDE_OF_POINT_1,
+    SRS_PP_LONGITUDE_OF_POINT_2,
+    SRS_PP_LATITUDE_OF_POINT_2,
+
+    "*",
+    SRS_PT_OBLIQUE_CYLINDRICAL_EQUAL_AREA,
+    "Oblique Cylindrical Equal Area",
+    SRS_PP_LONGITUDE_OF_POINT_1,
+    SRS_PP_AZIMUTH,
+
     NULL
 };
 
