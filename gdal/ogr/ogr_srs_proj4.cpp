@@ -619,6 +619,19 @@ OGRErr OGRSpatialReference::importFromProj4( const char * pszProj4 )
                 OSR_GDV( papszNV, "x_0", 0.0 ), 
                 OSR_GDV( papszNV, "y_0", 0.0 ) );
     }
+    
+    else if( EQUAL(pszProj,"ocea") )
+    {
+        const char *pszLonc = CSLFetchNameValue( papszNV, "lonc" );
+        if( pszLonc == NULL )
+                SetOCEA( OSR_GDV( papszNV, "lat_1", 0.0 ), 
+                        OSR_GDV( papszNV, "lon_1", 0.0 ), 
+                        OSR_GDV( papszNV, "lat_2", 0.0 ), 
+                        OSR_GDV( papszNV, "lon_2", 0.0 ) );
+    	else
+                SetOCEA( OSR_GDV( papszNV, "lonc", 0.0 ), 
+                      OSR_GDV( papszNV, "alpha", 0.0 ) );
+    }
 
     else if( EQUAL(pszProj,"tmerc") )
     {
@@ -1515,6 +1528,17 @@ OGRErr OGRSpatialReference::exportToProj4( char ** ppszProj4 ) const
                  GetNormProjParm(SRS_PP_STANDARD_PARALLEL_1,0.0),
                  GetNormProjParm(SRS_PP_FALSE_EASTING,0.0),
                  GetNormProjParm(SRS_PP_FALSE_NORTHING,0.0) );
+    }
+    
+    else if( EQUAL(pszProjection,SRS_PT_OBLIQUE_CYLINDRICAL_EQUAL_AREA) )
+    {
+    	if( GetNormProjParm(SRS_PP_LATITUDE_2, 0.0) == NULL )
+                CPLsnprintf( szProj4+strlen(szProj4), sizeof(szProj4)-strlen(szProj4),
+                         "+proj=ocea +lat_1=%.16g +lon_1=%.16g +lat_2=%.16g +lon_2=%.16g ",
+                         GetNormProjParm(SRS_PP_LATITUDE_1,0.0),
+                         GetNormProjParm(SRS_PP_LONGITUDE_1,0.0),
+                         GetNormProjParm(SRS_PP_LATITUDE_2,0.0),
+                         GetNormProjParm(SRS_PP_LONGITUDE_2,0.0) );
     }
 
     else if( EQUAL(pszProjection,SRS_PT_BONNE) )
