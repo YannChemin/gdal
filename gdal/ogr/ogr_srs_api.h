@@ -143,6 +143,10 @@ typedef enum {
 #define SRS_PT_MOLLWEIDE        "Mollweide"
 #define SRS_PT_NEW_ZEALAND_MAP_GRID                                     \
                                 "New_Zealand_Map_Grid"
+#define SRS_PT_OBLIQUE_CYLINDRICAL_EQUAL_AREA                           \
+                                "Oblique_Cylindrical_Equal_Area"
+#define SRS_PT_OBLIQUE_CYLINDRICAL_EQUAL_AREA_2POINTS                  \
+                                "Oblique_Cylindrical_Equal_Area_2Points"
 #define SRS_PT_OBLIQUE_STEREOGRAPHIC                                    \
                                 "Oblique_Stereographic"
 #define SRS_PT_ORTHOGRAPHIC     "Orthographic"
@@ -641,6 +645,15 @@ OGRErr CPL_DLL  OSRSetMollweide( OGRSpatialReferenceH hSRS,
 OGRErr CPL_DLL OSRSetNZMG( OGRSpatialReferenceH hSRS,
                            double dfCenterLat, double dfCenterLong,
                            double dfFalseEasting, double dfFalseNorthing );
+
+/** Oblique Cylindrical Equal Area */
+OGRErr CPL_DLL OSRSetOCEA( OGRSpatialReferenceH hSRS,
+                         double dfLong1, double dfAzimuth);
+
+/** Oblique Cylindrical Equal Area 2 Points */
+OGRErr CPL_DLL OSRSetOCEA2PT( OGRSpatialReferenceH hSRS,
+                        double dfLat1, double dfLong1,
+                        double dfLat2, double dfLong2,);
 
 /** Oblique Stereographic */
 OGRErr CPL_DLL OSRSetOS( OGRSpatialReferenceH hSRS,
