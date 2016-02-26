@@ -464,6 +464,13 @@ class CPL_DLL OGRSpatialReference
     OGRErr      SetNZMG( double dfCenterLat, double dfCenterLong,
                          double dfFalseEasting, double dfFalseNorthing );
 
+    /** Oblique Cylindrical Equal Area */
+    OGRErr      SetOCEA( double dfLong1, double dfAzimuth);
+
+    /** Oblique Cylindrical Equal Area (2 points)*/
+    OGRErr      SetOCEA2PT( double dfLat1, double dfLong1,
+                        double dfLat2, double dfLong2);
+
     /** Oblique Stereographic */
     OGRErr      SetOS( double dfOriginLat, double dfCMeridian,
                        double dfScale,
